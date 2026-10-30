@@ -1,0 +1,14 @@
+# (Opcional) Blueprint de Render: New + › Blueprint › elegir este repositorio.
+# Ajustar PYTHON_VERSION a la versión que imprime el notebook en Colab.
+services:
+  - type: web
+    name: olist-riesgo-api
+    runtime: python
+    plan: free
+    rootDir: api
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.12"
